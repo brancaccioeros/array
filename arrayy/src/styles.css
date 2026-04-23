@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+/* * body: Selettore di tag. Prende di mira l'intero tag <body> del tuo documento HTML principale.
+ * { : Parentesi graffa aperta. Inizia il blocco delle regole CSS per il selettore scelto. 
+ */
+body {
+  
+  /* * background-color: Proprietà CSS che serve a impostare il colore di sfondo.
+   * : (due punti): Simbolo obbligatorio che separa il nome della proprietà dal suo valore.
+   * #f8f9fa: Valore esadecimale (indicato dal cancelletto #) che corrisponde a un grigio chiarissimo, molto elegante.
+   * ; (punto e virgola): Simbolo FONDAMENTALE in CSS. Indica la fine di questa istruzione. Se lo scordi, il codice si rompe.
+   */
+  background-color: #f8f9fa;
+
+/* } : Parentesi graffa chiusa. Indica la fine delle regole per il 'body'. */
+}

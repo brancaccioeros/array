@@ -1,0 +1,35 @@
+<div class="container mt-4">
+
+  <div class="card mb-4">
+    <div class="card-body">
+      <h3>Aggiungi Prodotto</h3>
+      
+      <input type="text" placeholder="Nome" #nameInput class="form-control mb-2">
+      <input type="number" placeholder="Prezzo" #priceInput class="form-control mb-2">
+      <input type="text" placeholder="Descrizione" #descInput class="form-control mb-2">
+      
+      <button 
+        class="btn btn-success" 
+        (click)="addProduct(nameInput.value, priceInput.value, descInput.value); nameInput.value=''; priceInput.value=''; descInput.value=''">
+        Aggiungi
+      </button>
+    </div>
+  </div>
+
+  <h2>Lista Prodotti</h2>
+  <ul class="list-group">
+    
+    <li *ngFor="let product of products" class="list-group-item d-flex justify-content-between align-items-center">
+      
+      <span (click)="selectProduct(product)" style="cursor: pointer;">
+        {{ product.name }} - €{{ product.price }}
+      </span>
+
+      <button class="btn btn-danger btn-sm" (click)="deleteProduct(product)">Elimina</button>
+      
+    </li>
+  </ul>
+
+  <app-product-detail [product]="selectedProduct"></app-product-detail>
+
+</div>

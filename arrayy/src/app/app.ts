@@ -1,12 +1,15 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+// 1. Aggiungiamo "Component" al nome e specifichiamo il percorso esatto del file
+import { ProductListComponent } from './product-list/product-list'; 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  standalone: true,
+  // 2. Usiamo il nome corretto anche qui
+  imports: [ProductListComponent], 
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
-  protected readonly title = signal('arrayy');
+  title = 'arrayy';
 }

@@ -1,0 +1,15 @@
+<div *ngIf="product" class="card mt-3">
+  
+  <div class="card-body">
+    
+    <h2>Dettagli: {{ product.name }}</h2>
+    
+    <p><strong>Prezzo:</strong> €{{ product.price }}</p>
+    <p><strong>Descrizione:</strong> {{ product.description }}</p>
+  
+  </div>
+</div>
+
+<div *ngIf="!product" class="alert alert-info mt-3">
+  Nessun prodotto selezionato. Clicca su un prodotto per vederne i dettagli.
+</div>

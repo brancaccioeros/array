@@ -1,43 +1,40 @@
-<div class="container mt-4"> <!-- Contenitore principale con margine superiore (Bootstrap) -->
+<div class="container mt-4">
 
-  <div class="card mb-4"> <!-- Card Bootstrap con margine inferiore -->
-    <div class="card-body"> <!-- Corpo della card -->
-      <h3>Aggiungi Prodotto</h3> <!-- Titolo -->
-     
-      <input type="text" placeholder="Nome" #nameInput class="form-control mb-2"> <!--  input per il nome del prodotto -->
-      <input type="number" placeholder="Prezzo" #priceInput class="form-control mb-2"> <!--  input per il prezzo -->
-      <input type="text" placeholder="Descrizione" #descInput class="form-control mb-2"> <!--  input per la descrizione -->
-     
+  <div class="card mb-4">
+    <div class="card-body">
+      <h3>Aggiungi Prodotto</h3>
+
+      <input type="text" placeholder="Nome" #nameInput class="form-control mb-2">
+      <input type="number" placeholder="Prezzo" #priceInput class="form-control mb-2">
+      <input type="text" placeholder="Descrizione" #descInput class="form-control mb-2">
+
+      <!-- Bottone verde (Bootstrap) -->
       <button
-        class="btn btn-success" <!-- Bottone verde (Bootstrap) -->
+        class="btn btn-success"
         (click)="addProduct(nameInput.value, priceInput.value, descInput.value); nameInput.value=''; priceInput.value=''; descInput.value=''">
-        <!-- Evento click: chiama la funzione addProduct passando i valori degli input, poi svuota i campi -->
-        Aggiungi <!-- Testo del bottone -->
+        Aggiungi
       </button>
+
     </div>
   </div>
 
-  <h2>Lista Prodotti</h2> <!-- Titolo della lista prodotti -->
+  <h2>Lista Prodotti</h2>
 
-  <ul class="list-group"> <!-- Lista Bootstrap -->
-   
+  <ul class="list-group">
+
     <li *ngFor="let product of products" class="list-group-item d-flex justify-content-between align-items-center">
-      <!-- Ciclo Angular: per ogni prodotto nell'array products crea un elemento della lista -->
-     
+
       <span (click)="selectProduct(product)" style="cursor: pointer;">
-        <!-- Cliccando sul testo viene selezionato il prodotto -->
-        {{ product.name }} - €{{ product.price }} <!-- mostra nome e prezzo -->
+        {{ product.name }} - €{{ product.price }}
       </span>
 
       <button class="btn btn-danger btn-sm" (click)="deleteProduct(product)">
-        <!-- Bottone rosso per eliminare il prodotto; chiama la funzione deleteProduct -->
         Elimina
       </button>
-     
+
     </li>
   </ul>
 
   <app-product-detail [product]="selectedProduct"></app-product-detail>
-  <!-- Componente figlio Angular: riceve il prodotto selezionato tramite input -->
 
-</div> <!-- Fine del contenitore principale -->
+</div>

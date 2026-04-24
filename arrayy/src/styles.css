@@ -1,14 +1,18 @@
-/* * body: Selettore di tag. Prende di mira l'intero tag <body> del tuo documento HTML principale.
- * { : Parentesi graffa aperta. Inizia il blocco delle regole CSS per il selettore scelto. 
- */
-body {
-  
-  /* * background-color: Proprietà CSS che serve a impostare il colore di sfondo.
-   * : (due punti): Simbolo obbligatorio che separa il nome della proprietà dal suo valore.
-   * #f8f9fa: Valore esadecimale (indicato dal cancelletto #) che corrisponde a un grigio chiarissimo, molto elegante.
-   * ; (punto e virgola): Simbolo FONDAMENTALE in CSS. Indica la fine di questa istruzione. Se lo scordi, il codice si rompe.
-   */
-  background-color: #f8f9fa;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-/* } : Parentesi graffa chiusa. Indica la fine delle regole per il 'body'. */
+body {
+    /* Sfondo scuro profondo (Midnight Blue) */
+    background: #0f172a;
+    /* Font moderno sans-serif */
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: white;
+    /* Centriamo tutto */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
 }

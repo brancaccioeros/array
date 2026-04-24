@@ -1,0 +1,18 @@
+<div *ngIf="product" class="card mt-3"> <!-- Mostra questo blocco SOLO se esiste un prodotto selezionato -->
+
+  <div class="card-body"> <!-- Corpo della card Bootstrap -->
+   
+    <h2>Dettagli: {{ product.name }}</h2> <!-- Mostra il nome del prodotto usando interpolazione Angular -->
+   
+    <p><strong>Prezzo:</strong> €{{ product.price }}</p> <!-- Mostra il prezzo del prodotto -->
+    <p><strong>Descrizione:</strong> {{ product.description }}</p> <!-- Mostra la descrizione del prodotto -->
+ 
+  </div>
+</div>
+
+<div *ngIf="!product" class="alert alert-info mt-3"> 
+  <!-- Questo blocco appare SOLO se NON c'è un prodotto selezionato -->
+  
+  Nessun prodotto selezionato. Clicca su un prodotto per vederne i dettagli. 
+  <!-- Messaggio informativo per l'utente -->
+</div>

@@ -19,17 +19,18 @@
 
       <!-- Bottone per aggiungere un prodotto -->
       <button
-        class="btn btn-success" <!-- Stile Bootstrap: bottone verde -->
+        class="btn btn-success" 
+      
         
-        <!-- Evento click:
-             - chiama la funzione addProduct passando i valori degli input
-             - poi svuota gli input -->
         (click)="addProduct(nameInput.value, priceInput.value, descInput.value); 
                  nameInput.value=''; 
                  priceInput.value=''; 
                  descInput.value=''">
         Aggiungi
       </button>
+      <!--evento click: 
+      -chiama la funzione addproduct passando i valori degli input
+      -poi svuota gli input-->
 
     </div>
   </div>

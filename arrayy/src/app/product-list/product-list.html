@@ -6,10 +6,8 @@
 
     <div class="card-body">
 
-      <!-- Titolo -->
       <h3>Aggiungi Prodotto</h3>
 
-      <!-- Input nome -->
       <input
         type="text"
         placeholder="Nome"
@@ -17,7 +15,6 @@
         class="form-control mb-2"
       >
 
-      <!-- Input prezzo -->
       <input
         type="number"
         placeholder="Prezzo"
@@ -25,7 +22,6 @@
         class="form-control mb-2"
       >
 
-      <!-- Input descrizione -->
       <input
         type="text"
         placeholder="Descrizione"
@@ -33,10 +29,8 @@
         class="form-control mb-2"
       >
 
-      <!-- Bottone aggiunta -->
       <button
         class="btn btn-success"
-
         (click)="
           addProduct(
             nameInput.value,
@@ -45,9 +39,7 @@
           );
 
           nameInput.value = '';
-
           priceInput.value = '';
-
           descInput.value = '';
         "
       >
@@ -55,49 +47,27 @@
       </button>
 
     </div>
-
   </div>
 
-  <!-- Titolo lista -->
   <h2>Lista Prodotti</h2>
 
-  <!-- Lista prodotti -->
   <ul class="list-group">
 
-    <!-- Ciclo prodotti -->
     <li
-
       *ngFor="let product of products"
-
       class="list-group-item d-flex justify-content-between align-items-center"
-
-      [style.background-color]="
-        product.price > 60 ? 'red' : 'white'
-      "
-
     >
 
-      <!-- Area cliccabile -->
       <span
-
         (click)="selectProduct(product)"
-
         style="cursor: pointer;"
-
       >
-
-        <!-- Nome e prezzo -->
         {{ product.name }} - €{{ product.price }}
-
       </span>
 
-      <!-- Bottone elimina -->
       <button
-
         class="btn btn-danger btn-sm"
-
         (click)="deleteProduct(product)"
-
       >
         Elimina
       </button>
@@ -106,7 +76,6 @@
 
   </ul>
 
-  <!-- Dettaglio prodotto selezionato -->
   <app-product-detail
     [product]="selectedProduct">
   </app-product-detail>

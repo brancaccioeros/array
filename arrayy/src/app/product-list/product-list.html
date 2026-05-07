@@ -1,68 +1,114 @@
-<!-- Contenitore principale con margine superiore (Bootstrap mt-4) -->
+<!-- Contenitore principale -->
 <div class="container mt-4">
 
-  <!-- Card Bootstrap con margine inferiore -->
+  <!-- Card per aggiungere prodotti -->
   <div class="card mb-4">
-    <div class="card-body"> <!-- Corpo della card -->
 
-      <!-- Titolo della sezione -->
+    <div class="card-body">
+
+      <!-- Titolo -->
       <h3>Aggiungi Prodotto</h3>
 
-      <!-- Input per il nome del prodotto, con variabile template #nameInput -->
-      <input type="text" placeholder="Nome" #nameInput class="form-control mb-2">
+      <!-- Input nome -->
+      <input
+        type="text"
+        placeholder="Nome"
+        #nameInput
+        class="form-control mb-2"
+      >
 
-      <!-- Input per il prezzo, tipo numerico -->
-      <input type="number" placeholder="Prezzo" #priceInput class="form-control mb-2">
+      <!-- Input prezzo -->
+      <input
+        type="number"
+        placeholder="Prezzo"
+        #priceInput
+        class="form-control mb-2"
+      >
 
-      <!-- Input per la descrizione -->
-      <input type="text" placeholder="Descrizione" #descInput class="form-control mb-2">
+      <!-- Input descrizione -->
+      <input
+        type="text"
+        placeholder="Descrizione"
+        #descInput
+        class="form-control mb-2"
+      >
 
-      <!-- Bottone per aggiungere un prodotto -->
+      <!-- Bottone aggiunta -->
       <button
-        class="btn btn-success" 
-      
-        
-        (click)="addProduct(nameInput.value, priceInput.value, descInput.value); 
-                 nameInput.value=''; 
-                 priceInput.value=''; 
-                 descInput.value=''">
+        class="btn btn-success"
+
+        (click)="
+          addProduct(
+            nameInput.value,
+            priceInput.value,
+            descInput.value
+          );
+
+          nameInput.value = '';
+
+          priceInput.value = '';
+
+          descInput.value = '';
+        "
+      >
         Aggiungi
       </button>
-      <!--evento click: 
-      -chiama la funzione addproduct passando i valori degli input
-      -poi svuota gli input-->
 
     </div>
+
   </div>
 
-  <!-- Titolo della lista prodotti -->
+  <!-- Titolo lista -->
   <h2>Lista Prodotti</h2>
 
-  <!-- Lista Bootstrap -->
+  <!-- Lista prodotti -->
   <ul class="list-group">
 
-    <!-- Ciclo Angular:
-         *ngFor itera su tutti i prodotti nell'array products -->
-    <li *ngFor="let product of products" 
-        class="list-group-item d-flex justify-content-between align-items-center">
+    <!-- Ciclo prodotti -->
+    <li
 
-      <!-- Span cliccabile:
-           - mostra nome e prezzo del prodotto
-           - al click seleziona il prodotto -->
-      <span (click)="selectProduct(product)" style="cursor: pointer;">
-        {{ product.name }} - €{{ product.price }} <!-- Interpolazione Angular -->
+      *ngFor="let product of products"
+
+      class="list-group-item d-flex justify-content-between align-items-center"
+
+      [style.background-color]="
+        product.price > 60 ? 'red' : 'white'
+      "
+
+    >
+
+      <!-- Area cliccabile -->
+      <span
+
+        (click)="selectProduct(product)"
+
+        style="cursor: pointer;"
+
+      >
+
+        <!-- Nome e prezzo -->
+        {{ product.name }} - €{{ product.price }}
+
       </span>
 
-      <!-- Bottone per eliminare il prodotto -->
-      <button class="btn btn-danger btn-sm" (click)="deleteProduct(product)">
+      <!-- Bottone elimina -->
+      <button
+
+        class="btn btn-danger btn-sm"
+
+        (click)="deleteProduct(product)"
+
+      >
         Elimina
       </button>
 
     </li>
+
   </ul>
 
-  <!-- Componente figlio:
-       riceve il prodotto selezionato tramite binding -->
-  <app-product-detail [product]="selectedProduct"></app-product-detail>
+  <!-- Dettaglio prodotto selezionato -->
+  <app-product-detail
+    [product]="selectedProduct">
+  </app-product-detail>
 
 </div>

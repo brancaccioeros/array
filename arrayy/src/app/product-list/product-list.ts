@@ -1,34 +1,26 @@
-import { Component } from '@angular/core'; 
-// Importa il decoratore Component necessario per definire un componente Angular
+import { Component } from '@angular/core';
 
-import { CommonModule } from '@angular/common'; 
-// Modulo base Angular: serve per direttive come *ngFor e *ngIf
+import { CommonModule } from '@angular/common';
 
-import { Product } from '../product'; 
-// Importa l'interfaccia/modello Product
+import { Product } from '../product';
 
-import { ProductDetail } from '../product-detail/product-detail'; 
-// Importa il componente figlio per mostrare i dettagli
+import { ProductDetail } from '../product-detail/product-detail';
 
 @Component({
-  selector: 'app-product-list', 
-  // Nome del tag HTML del componente
+  selector: 'app-product-list',
 
-  standalone: true, 
-  // Indica che il componente è standalone (non serve NgModule)
+  standalone: true,
 
-  imports: [CommonModule, ProductDetail],  
-  // Importa i moduli/componenti usati nell’HTML
+  imports: [CommonModule, ProductDetail],
 
-  templateUrl: './product-list.html', 
-  // Percorso del file HTML associato
+  templateUrl: './product-list.html',
 
   styleUrls: ['./product-list.css']
-  // Percorso del file CSS associato
 })
+
 export class ProductListComponent {
-  
-  // Array di prodotti iniziali
+
+  // Lista prodotti iniziale
   products: Product[] = [
     { name: 'Computer Portatile', price: 800, description: 'PC performante per studiare TPSI.' },
     { name: 'Mouse Wireless', price: 25, description: 'Mouse senza fili.' },
@@ -37,44 +29,58 @@ export class ProductListComponent {
     { name: 'Zaino porta PC', price: 40, description: 'Zaino resistente per la scuola.' }
   ];
 
-  selectedProduct?: Product; 
-  // Variabile che contiene il prodotto selezionato (opzionale)
+  // Prodotto selezionato
+  selectedProduct?: Product;
 
+  // Selezione prodotto
   selectProduct(product: Product): void {
-    // Metodo chiamato quando l’utente clicca su un prodotto
     this.selectedProduct = product;
-    // Imposta il prodotto selezionato
   }
 
+  // Eliminazione prodotto
   deleteProduct(product: Product): void {
-    // Metodo per eliminare un prodotto dalla lista
 
     this.products = this.products.filter(p => p !== product);
-    // Crea un nuovo array senza il prodotto selezionato
 
     if (this.selectedProduct === product) {
-      // Se il prodotto eliminato era selezionato
       this.selectedProduct = undefined;
-      // Deseleziona il prodotto
     }
   }
 
+  // Aggiunta prodotto
   addProduct(name: string, priceStr: string, description: string): void {
-    // Metodo per aggiungere un nuovo prodotto
 
+    // Controllo campi vuoti
     if (!name || !priceStr || !description) {
-      // Controlla che tutti i campi siano compilati
       return;
-      // Se manca qualcosa, esce senza fare nulla
     }
 
+    // Conversione prezzo
     const price = parseFloat(priceStr);
-    // Converte il prezzo da stringa a numero
 
-    const newProduct: Product = { name, price, description };
-    // Crea un nuovo oggetto prodotto
+    // Se il prezzo è maggiore di 60
+    if (price > 60) {
 
+      // Mostra alert di conferma
+      const conferma = confirm(
+        'Il prodotto costa più di 60€. Sei sicuro di volerlo aggiungere?'
+      );
+
+      // Se l'utente annulla
+      if (!conferma) {
+        return;
+      }
+    }
+
+    // Creazione nuovo prodotto
+    const newProduct: Product = {
+      name,
+      price,
+      description
+    };
+
+    // Aggiunta alla lista
     this.products.push(newProduct);
-    // Aggiunge il nuovo prodotto all’array
   }
+
 }
